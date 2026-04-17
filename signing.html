@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In – KisanMart</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body class="auth-body">
+
+<nav class="navbar">
+  <div class="nav-brand"><a href="index.html" style="color:inherit;text-decoration:none"><span class="leaf">🌾</span> KisanMart</a></div>
+</nav>
+
+<div class="auth-container">
+  <div class="auth-left">
+    <div class="auth-hero-text">
+      <h1>Welcome to<br/><span class="highlight">KisanMart</span></h1>
+      <p>India's leading farm equipment marketplace. Login to book equipment, track orders, and manage your farm needs.</p>
+      <div class="auth-features">
+        <div class="af"><span>✅</span> 200+ Equipment Types</div>
+        <div class="af"><span>🚚</span> Free Delivery Pan India</div>
+        <div class="af"><span>💳</span> EMI & Subsidy Available</div>
+        <div class="af"><span>📞</span> 24/7 Telugu Support</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-right">
+    <div class="auth-card">
+
+      <!-- TABS -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" onclick="showTab('login')">Login</button>
+        <button class="auth-tab" id="signupTab" onclick="showTab('signup')">Sign Up</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="loginForm">
+        <h2>Welcome Back 👋</h2>
+        <p class="auth-sub">Login to your KisanMart account</p>
+        <div class="auth-form">
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Mobile Number</label>
+            <input type="tel" id="loginMobile" placeholder="Enter 10-digit mobile" maxlength="10"/>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-lock"></i> Password</label>
+            <div class="pass-input">
+              <input type="password" id="loginPassword" placeholder="Enter password"/>
+              <button type="button" onclick="togglePass('loginPassword', this)">👁</button>
+            </div>
+          </div>
+          <div class="form-options">
+            <label class="remember"><input type="checkbox"/> Remember me</label>
+            <a href="#" class="forgot">Forgot Password?</a>
+          </div>
+          <button class="btn-auth" onclick="handleLogin()">Login to KisanMart</button>
+          <div class="divider"><span>OR</span></div>
+          <button class="btn-otp" onclick="sendOTP()">📱 Login with OTP</button>
+        </div>
+      </div>
+
+      <!-- SIGNUP FORM -->
+      <div id="signupForm" class="hidden">
+        <h2>Create Account 🌱</h2>
+        <p class="auth-sub">Join 50,000+ farmers on KisanMart</p>
+        <div class="auth-form">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label>First Name *</label>
+              <input type="text" id="regFirstName" placeholder="First name"/>
+            </div>
+            <div class="form-group">
+              <label>Last Name *</label>
+              <input type="text" id="regLastName" placeholder="Last name"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Mobile Number *</label>
+            <input type="tel" id="regMobile" placeholder="10-digit mobile" maxlength="10"/>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email Address</label>
+            <input type="email" id="regEmail" placeholder="your@email.com"/>
+          </div>
+          <div class="form-group">
+            <label>State *</label>
+            <select id="regState">
+              <option value="">Select your state</option>
+              <option>Telangana</option>
+              <option>Andhra Pradesh</option>
+              <option>Maharashtra</option>
+              <option>Karnataka</option>
+              <option>Punjab</option>
+              <option>Haryana</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-lock"></i> Password *</label>
+            <div class="pass-input">
+              <input type="password" id="regPassword" placeholder="Min 8 characters"/>
+              <button type="button" onclick="togglePass('regPassword', this)">👁</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-lock"></i> Confirm Password *</label>
+            <input type="password" id="regConfirm" placeholder="Re-enter password"/>
+          </div>
+          <label class="terms-check">
+            <input type="checkbox" id="agreeTerms"/>
+            I agree to <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a>
+          </label>
+          <button class="btn-auth" onclick="handleSignup()">Create My Account</button>
+        </div>
+      </div>
+
+      <!-- OTP MODAL (inline) -->
+      <div id="otpSection" class="hidden">
+        <h2>Enter OTP 📲</h2>
+        <p class="auth-sub">6-digit OTP sent to your mobile (Demo: use <strong>123456</strong>)</p>
+        <div class="otp-inputs">
+          <input type="text" maxlength="1" class="otp-box" oninput="otpMove(this,1)"/>
+          <input type="text" maxlength="1" class="otp-box" oninput="otpMove(this,2)"/>
+          <input type="text" maxlength="1" class="otp-box" oninput="otpMove(this,3)"/>
+          <input type="text" maxlength="1" class="otp-box" oninput="otpMove(this,4)"/>
+          <input type="text" maxlength="1" class="otp-box" oninput="otpMove(this,5)"/>
+          <input type="text" maxlength="1" class="otp-box" oninput="otpMove(this,6)"/>
+        </div>
+        <button class="btn-auth" onclick="verifyOTP()">Verify OTP</button>
+        <p class="resend">Didn't receive? <a href="#" onclick="sendOTP()">Resend OTP</a></p>
+        <button class="btn-back-auth" onclick="backToLogin()">← Back to Login</button>
+      </div>
+
+    </div>
+
+    <!-- MONGO NOTE FOR DEVELOPER -->
+    <div class="dev-note">
+      <strong>🛠️ Developer Note (MongoDB Setup):</strong><br/>
+      Connect this form to MongoDB Atlas. See <code>README.md</code> for full backend code.
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
