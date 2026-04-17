@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Equipment Catalog – KisanMart</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand"><span class="leaf">🌾</span> KisanMart</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="movies.html" class="active">Equipment</a></li>
+    <li><a href="booking.html">Book Now</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+  <div class="nav-auth">
+    <a href="signin.html" class="btn-outline">Login</a>
+    <a href="signin.html" class="btn-solid">Sign Up</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<section class="page-hero">
+  <h1>🚜 Equipment Catalog</h1>
+  <p>200+ farm equipment available for purchase & rental</p>
+</section>
+
+<!-- FILTERS -->
+<section class="catalog-section">
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>Category</label>
+      <select id="catFilter" onchange="filterProducts()">
+        <option value="all">All Categories</option>
+        <option value="tractor">Tractors</option>
+        <option value="irrigation">Irrigation</option>
+        <option value="harvester">Harvesters</option>
+        <option value="drone">Drones</option>
+        <option value="tools">Hand Tools</option>
+        <option value="seeds">Seeds & Fertilizer</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Price Range</label>
+      <select id="priceFilter" onchange="filterProducts()">
+        <option value="all">All Prices</option>
+        <option value="low">Under ₹10,000</option>
+        <option value="mid">₹10,000 – ₹1,00,000</option>
+        <option value="high">Above ₹1,00,000</option>
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Sort By</label>
+      <select>
+        <option>Popularity</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest First</option>
+      </select>
+    </div>
+    <div class="filter-group search-group">
+      <input type="text" placeholder="🔍 Search equipment..." id="searchInput" oninput="filterProducts()"/>
+    </div>
+  </div>
+
+  <div class="products-grid" id="productGrid">
+
+    <!-- TRACTORS -->
+    <div class="product-card" data-cat="tractor" data-price="high">
+      <div class="product-img big">🚜</div>
+      <div class="product-info">
+        <span class="tag">Tractor</span>
+        <h3>Mahindra 575 DI</h3>
+        <p>47 HP • 4WD • Power Steering • Diesel</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (238)</div>
+        <div class="price">₹8,50,000 <span class="or">| Rent: ₹2,500/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="tractor" data-price="high">
+      <div class="product-img big">🚜</div>
+      <div class="product-info">
+        <span class="tag">Tractor</span>
+        <h3>Swaraj 744 FE</h3>
+        <p>45 HP • Dual Clutch • Oil Immersed Brakes</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (185)</div>
+        <div class="price">₹7,20,000 <span class="or">| Rent: ₹2,200/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="tractor" data-price="high">
+      <div class="product-img big">🚜</div>
+      <div class="product-info">
+        <span class="tag">Tractor</span>
+        <h3>John Deere 5050 D</h3>
+        <p>50 HP • PowrReverser • 8F/4R Gears</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (320)</div>
+        <div class="price">₹9,50,000 <span class="or">| Rent: ₹3,000/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- IRRIGATION -->
+    <div class="product-card" data-cat="irrigation" data-price="mid">
+      <div class="product-img big">💧</div>
+      <div class="product-info">
+        <span class="tag">Irrigation</span>
+        <h3>Drip Irrigation Kit (1 Acre)</h3>
+        <p>Complete setup • 40% water saving • Auto timer</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (412)</div>
+        <div class="price">₹15,000 <span class="or">Free Installation</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="irrigation" data-price="mid">
+      <div class="product-img big">💧</div>
+      <div class="product-info">
+        <span class="tag">Irrigation</span>
+        <h3>Sprinkler System Set</h3>
+        <p>2 Acre coverage • 360° rotation • Aluminum pipes</p>
+        <div class="rating">⭐⭐⭐⭐ (189)</div>
+        <div class="price">₹22,000 <span class="or">Free Demo</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="irrigation" data-price="low">
+      <div class="product-img big">💧</div>
+      <div class="product-info">
+        <span class="tag">Irrigation</span>
+        <h3>Water Pump 5 HP</h3>
+        <p>Self-priming • 2 inch outlet • 2 year warranty</p>
+        <div class="rating">⭐⭐⭐⭐ (240)</div>
+        <div class="price">₹8,500 <span class="or">| Rent: ₹400/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HARVESTERS -->
+    <div class="product-card" data-cat="harvester" data-price="high">
+      <div class="product-img big">🌾</div>
+      <div class="product-info">
+        <span class="tag">Harvester</span>
+        <h3>Combine Harvester Mini</h3>
+        <p>Self-propelled • 3–5 acre/day • Paddy & wheat</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (98)</div>
+        <div class="price">₹12,00,000 <span class="or">| Rent: ₹5,000/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="harvester" data-price="high">
+      <div class="product-img big">🌾</div>
+      <div class="product-info">
+        <span class="tag">Harvester</span>
+        <h3>Reaper Binder Machine</h3>
+        <p>1.2m cutting width • Engine powered</p>
+        <div class="rating">⭐⭐⭐⭐ (145)</div>
+        <div class="price">₹1,80,000 <span class="or">| Rent: ₹1,200/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRONES -->
+    <div class="product-card" data-cat="drone" data-price="high">
+      <div class="product-img big">🚁</div>
+      <div class="product-info">
+        <span class="tag">Drone</span>
+        <h3>Agri Spray Drone X10</h3>
+        <p>10L tank • 8-10 acre/hr • GPS auto-fly</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (75)</div>
+        <div class="price">₹4,50,000 <span class="or">| Rent: ₹3,000/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="drone" data-price="high">
+      <div class="product-img big">🚁</div>
+      <div class="product-info">
+        <span class="tag">Drone</span>
+        <h3>Survey Mapping Drone</h3>
+        <p>4K camera • NDVI mapping • 50 min flight time</p>
+        <div class="rating">⭐⭐⭐⭐ (42)</div>
+        <div class="price">₹2,80,000 <span class="or">| Rent: ₹2,000/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLS -->
+    <div class="product-card" data-cat="tools" data-price="low">
+      <div class="product-img big">🔧</div>
+      <div class="product-info">
+        <span class="tag">Hand Tools</span>
+        <h3>Farmer Tool Kit (15 pcs)</h3>
+        <p>Shovel, pickaxe, sickle, sprayer & more</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (560)</div>
+        <div class="price">₹2,500 <span class="or">Free Carry Bag</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="tools" data-price="low">
+      <div class="product-img big">🔧</div>
+      <div class="product-info">
+        <span class="tag">Hand Tools</span>
+        <h3>Battery Operated Sprayer</h3>
+        <p>16L tank • 4 nozzles • 4–6hr battery</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (820)</div>
+        <div class="price">₹3,800 <span class="or">1 yr warranty</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEEDS -->
+    <div class="product-card" data-cat="seeds" data-price="low">
+      <div class="product-img big">🌱</div>
+      <div class="product-info">
+        <span class="tag">Seeds</span>
+        <h3>Hybrid Paddy Seeds (5 kg)</h3>
+        <p>High yield • Disease resistant • Telangana certified</p>
+        <div class="rating">⭐⭐⭐⭐⭐ (1200)</div>
+        <div class="price">₹1,200 <span class="or">Free Soil Test Guide</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Order Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card" data-cat="seeds" data-price="low">
+      <div class="product-img big">🌱</div>
+      <div class="product-info">
+        <span class="tag">Fertilizer</span>
+        <h3>NPK Bio Fertilizer (50 kg)</h3>
+        <p>Organic • Soil enrichment • 2X yield boost</p>
+        <div class="rating">⭐⭐⭐⭐ (650)</div>
+        <div class="price">₹950 <span class="or">Bulk discount available</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Order Now</a>
+          <button class="btn-wish">♡ Wishlist</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><h3>🌾 KisanMart</h3><p>India's trusted farm equipment marketplace.</p></div>
+    <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="movies.html">Equipment</a></li><li><a href="booking.html">Booking</a></li></ul></div>
+    <div><h4>Contact</h4><p>📞 1800-XXX-XXXX</p><p>📧 support@kisanmart.in</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2024 KisanMart. All rights reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
