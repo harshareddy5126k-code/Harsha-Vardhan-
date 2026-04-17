@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KisanMart – Farmer Equipment Portal</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="leaf">🌾</span> KisanMart
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="movies.html">Equipment</a></li>
+    <li><a href="booking.html">Book Now</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-auth">
+    <a href="signin.html" class="btn-outline">Login</a>
+    <a href="signin.html" class="btn-solid">Sign Up</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge">🌱 India's #1 Farmer Equipment Portal</span>
+    <h1>Modern Tools for<br/><span class="highlight">Indian Farmers</span></h1>
+    <p>Rent or buy tractors, harvesters, irrigation systems & more. Fast delivery. Easy booking. Trusted by 50,000+ farmers.</p>
+    <div class="hero-buttons">
+      <a href="movies.html" class="btn-hero-primary">Explore Equipment</a>
+      <a href="booking.html" class="btn-hero-secondary">Book Now</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>50K+</strong><span>Farmers</span></div>
+      <div class="stat"><strong>200+</strong><span>Equipment</span></div>
+      <div class="stat"><strong>28</strong><span>States</span></div>
+      <div class="stat"><strong>4.8★</strong><span>Rating</span></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-img-placeholder">
+      <div class="tractor-icon">🚜</div>
+      <div class="float-badge b1">✅ Available Now</div>
+      <div class="float-badge b2">🚚 Free Delivery</div>
+      <div class="float-badge b3">💳 Easy Payment</div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <h2>Browse by Category</h2>
+  <p class="sub">Everything a modern farmer needs</p>
+  <div class="cat-grid">
+    <a href="movies.html?cat=tractors" class="cat-card">
+      <div class="cat-icon">🚜</div>
+      <h3>Tractors</h3>
+      <span>42 items</span>
+    </a>
+    <a href="movies.html?cat=irrigation" class="cat-card">
+      <div class="cat-icon">💧</div>
+      <h3>Irrigation</h3>
+      <span>38 items</span>
+    </a>
+    <a href="movies.html?cat=harvesters" class="cat-card">
+      <div class="cat-icon">🌾</div>
+      <h3>Harvesters</h3>
+      <span>24 items</span>
+    </a>
+    <a href="movies.html?cat=seeds" class="cat-card">
+      <div class="cat-icon">🌱</div>
+      <h3>Seeds & Fertilizer</h3>
+      <span>80 items</span>
+    </a>
+    <a href="movies.html?cat=tools" class="cat-card">
+      <div class="cat-icon">🔧</div>
+      <h3>Hand Tools</h3>
+      <span>65 items</span>
+    </a>
+    <a href="movies.html?cat=drones" class="cat-card">
+      <div class="cat-icon">🚁</div>
+      <h3>Agri Drones</h3>
+      <span>12 items</span>
+    </a>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="featured">
+  <h2>Featured Equipment</h2>
+  <p class="sub">Top picks this season</p>
+  <div class="products-grid">
+
+    <div class="product-card">
+      <div class="product-img">🚜</div>
+      <div class="product-info">
+        <span class="tag">Tractor</span>
+        <h3>Mahindra 575 DI</h3>
+        <p>47 HP, 4WD, Power Steering</p>
+        <div class="price">₹8,50,000 <span class="or">or Rent ₹2,500/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card featured-tag">
+      <div class="badge-top">🔥 Best Seller</div>
+      <div class="product-img">💧</div>
+      <div class="product-info">
+        <span class="tag">Irrigation</span>
+        <h3>Drip Irrigation Kit (1 Acre)</h3>
+        <p>Complete setup, 40% water saving</p>
+        <div class="price">₹15,000 <span class="or">Free Installation</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🌾</div>
+      <div class="product-info">
+        <span class="tag">Harvester</span>
+        <h3>Combine Harvester Mini</h3>
+        <p>Self-propelled, 3–5 acre/day</p>
+        <div class="price">₹12,00,000 <span class="or">or Rent ₹5,000/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">🚁</div>
+      <div class="product-info">
+        <span class="tag">Drone</span>
+        <h3>Agri Spray Drone</h3>
+        <p>10L tank, 8–10 acre/hour spray</p>
+        <div class="price">₹4,50,000 <span class="or">or Rent ₹3,000/day</span></div>
+        <div class="card-btns">
+          <a href="booking.html" class="btn-book">Book Now</a>
+          <button class="btn-wish">♡</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:2rem">
+    <a href="movies.html" class="btn-hero-primary">View All Equipment →</a>
+  </div>
+</section>
+
+<!-- WHY KISANMART -->
+<section class="why">
+  <h2>Why Choose KisanMart?</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <i class="fas fa-truck"></i>
+      <h3>Fast Delivery</h3>
+      <p>Equipment delivered to your farm within 24–48 hours across Telangana, AP & major states.</p>
+    </div>
+    <div class="why-card">
+      <i class="fas fa-shield-alt"></i>
+      <h3>Verified Equipment</h3>
+      <p>All machines are quality-checked, insured, and certified before listing on our platform.</p>
+    </div>
+    <div class="why-card">
+      <i class="fas fa-headset"></i>
+      <h3>24/7 Support</h3>
+      <p>Dedicated support in Telugu, Hindi & English. Call us anytime at 1800-XXX-XXXX.</p>
+    </div>
+    <div class="why-card">
+      <i class="fas fa-rupee-sign"></i>
+      <h3>Best Prices</h3>
+      <p>Government subsidy eligible. EMI options. Compare prices before booking.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-text">
+    <h2>About KisanMart</h2>
+    <p>KisanMart is a farmer-first platform built to modernize Indian agriculture. We connect farmers directly with equipment suppliers, eliminating middlemen and reducing costs by up to 40%.</p>
+    <p>Founded in 2023, we operate in 28 states, serving 50,000+ farmers with 200+ types of equipment available for purchase or short-term rental.</p>
+    <p><strong>Our Mission:</strong> Make every Indian farmer productive, profitable, and technology-enabled.</p>
+    <a href="booking.html" class="btn-hero-primary" style="margin-top:1rem;display:inline-block">Start Booking</a>
+  </div>
+  <div class="about-img">
+    <div class="about-placeholder">🌾🚜🌱<br/>Empowering<br/>Indian Farmers</div>
+  </div>
+</section>
+
+<!-- SURVEY SECTION -->
+<section class="survey">
+  <h2>📋 Farmer Survey</h2>
+  <p class="sub">Help us serve you better — takes only 2 minutes</p>
+  <div class="survey-box">
+    <div class="survey-q">
+      <label>1. What type of farming do you do?</label>
+      <select>
+        <option>Select...</option>
+        <option>Crop Farming</option>
+        <option>Horticulture</option>
+        <option>Dairy Farming</option>
+        <option>Poultry</option>
+        <option>Mixed Farming</option>
+      </select>
+    </div>
+    <div class="survey-q">
+      <label>2. How many acres do you farm?</label>
+      <select>
+        <option>Select...</option>
+        <option>Less than 2 acres</option>
+        <option>2–5 acres</option>
+        <option>5–10 acres</option>
+        <option>10+ acres</option>
+      </select>
+    </div>
+    <div class="survey-q">
+      <label>3. Which equipment do you need most?</label>
+      <select>
+        <option>Select...</option>
+        <option>Tractor</option>
+        <option>Irrigation System</option>
+        <option>Harvester</option>
+        <option>Drone</option>
+        <option>Hand Tools</option>
+      </select>
+    </div>
+    <div class="survey-q">
+      <label>4. Your State</label>
+      <select>
+        <option>Select...</option>
+        <option>Telangana</option>
+        <option>Andhra Pradesh</option>
+        <option>Maharashtra</option>
+        <option>Punjab</option>
+        <option>Karnataka</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <button class="btn-hero-primary" onclick="submitSurvey()">Submit Survey</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h3>🌾 KisanMart</h3>
+      <p>India's trusted farm equipment marketplace. Empowering farmers since 2023.</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="movies.html">Equipment</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="signin.html">Login</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#">Tractors</a></li>
+        <li><a href="#">Irrigation</a></li>
+        <li><a href="#">Harvesters</a></li>
+        <li><a href="#">Drones</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>📞 1800-XXX-XXXX (Toll Free)</p>
+      <p>📧 support@kisanmart.in</p>
+      <p>📍 Hyderabad, Telangana</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 KisanMart. All rights reserved. | Made with ❤️ for Indian Farmers</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
