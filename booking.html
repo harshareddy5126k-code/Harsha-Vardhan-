@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Equipment – KisanMart</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-brand"><span class="leaf">🌾</span> KisanMart</div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="movies.html">Equipment</a></li>
+    <li><a href="booking.html" class="active">Book Now</a></li>
+    <li><a href="index.html#about">About</a></li>
+  </ul>
+  <div class="nav-auth">
+    <a href="signin.html" class="btn-outline">Login</a>
+    <a href="signin.html" class="btn-solid">Sign Up</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<section class="page-hero">
+  <h1>📋 Book Equipment</h1>
+  <p>Fill all details below – takes less than 2 minutes</p>
+</section>
+
+<!-- PROGRESS BAR -->
+<div class="progress-container">
+  <div class="progress-steps">
+    <div class="step active" id="step1-indicator">
+      <div class="step-circle">1</div>
+      <span>Your Details</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step2-indicator">
+      <div class="step-circle">2</div>
+      <span>Equipment</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step3-indicator">
+      <div class="step-circle">3</div>
+      <span>Delivery</span>
+    </div>
+    <div class="step-line"></div>
+    <div class="step" id="step4-indicator">
+      <div class="step-circle">4</div>
+      <span>Payment</span>
+    </div>
+  </div>
+</div>
+
+<div class="booking-layout">
+  <!-- FORM STEPS -->
+  <div class="booking-form-container">
+
+    <!-- STEP 1: PERSONAL DETAILS -->
+    <div class="booking-step" id="step1">
+      <h2><i class="fas fa-user"></i> Step 1: Your Personal Details</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" id="fullName" placeholder="Enter your full name" required/>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number *</label>
+          <input type="tel" id="mobile" placeholder="10-digit mobile number" maxlength="10" required/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" placeholder="your@email.com"/>
+        </div>
+        <div class="form-group">
+          <label>Aadhaar Number *</label>
+          <input type="text" id="aadhaar" placeholder="12-digit Aadhaar number" maxlength="12" required/>
+        </div>
+        <div class="form-group">
+          <label>Farm Size (in acres) *</label>
+          <input type="number" id="farmSize" placeholder="e.g. 5" required/>
+        </div>
+        <div class="form-group">
+          <label>Type of Farming *</label>
+          <select id="farmType" required>
+            <option value="">Select...</option>
+            <option>Crop Farming</option>
+            <option>Horticulture</option>
+            <option>Dairy Farming</option>
+            <option>Poultry</option>
+            <option>Mixed Farming</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn-next" onclick="goToStep(2)">Next: Choose Equipment →</button>
+    </div>
+
+    <!-- STEP 2: EQUIPMENT SELECTION -->
+    <div class="booking-step hidden" id="step2">
+      <h2><i class="fas fa-tractor"></i> Step 2: Select Equipment</h2>
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label>Equipment Category *</label>
+          <select id="equipCat" onchange="updateEquipment()" required>
+            <option value="">Select category...</option>
+            <option value="Tractor">Tractors</option>
+            <option value="Irrigation">Irrigation Systems</option>
+            <option value="Harvester">Harvesters</option>
+            <option value="Drone">Agri Drones</option>
+            <option value="Tools">Hand Tools</option>
+            <option value="Seeds">Seeds & Fertilizer</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <label>Specific Equipment *</label>
+          <select id="equipName" onchange="updatePrice()" required>
+            <option value="">Select equipment...</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Booking Type *</label>
+          <select id="bookType" onchange="updateBookingType()" required>
+            <option value="">Select...</option>
+            <option value="purchase">Purchase (Buy)</option>
+            <option value="rent">Rent / Hire</option>
+          </select>
+        </div>
+        <div class="form-group" id="daysGroup" style="display:none">
+          <label>Number of Days (Rental) *</label>
+          <input type="number" id="rentalDays" placeholder="e.g. 3" min="1" oninput="updatePrice()"/>
+        </div>
+        <div class="form-group">
+          <label>Quantity *</label>
+          <input type="number" id="quantity" value="1" min="1" oninput="updatePrice()"/>
+        </div>
+        <div class="form-group">
+          <label>Estimated Price</label>
+          <div class="price-display" id="priceDisplay">₹ — select equipment</div>
+        </div>
+      </div>
+      <div class="step-buttons">
+        <button class="btn-back" onclick="goToStep(1)">← Back</button>
+        <button class="btn-next" onclick="goToStep(3)">Next: Delivery Details →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: DELIVERY -->
+    <div class="booking-step hidden" id="step3">
+      <h2><i class="fas fa-truck"></i> Step 3: Delivery Address</h2>
+      <div class="form-grid">
+        <div class="form-group full-width">
+          <label>Full Address / Village Name *</label>
+          <textarea id="address" rows="3" placeholder="House no, Street, Village, Mandal" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>District *</label>
+          <input type="text" id="district" placeholder="e.g. Rangareddy" required/>
+        </div>
+        <div class="form-group">
+          <label>State *</label>
+          <select id="state" required>
+            <option value="">Select State</option>
+            <option>Telangana</option>
+            <option>Andhra Pradesh</option>
+            <option>Maharashtra</option>
+            <option>Karnataka</option>
+            <option>Punjab</option>
+            <option>Haryana</option>
+            <option>Madhya Pradesh</option>
+            <option>Uttar Pradesh</option>
+            <option>Rajasthan</option>
+            <option>Bihar</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>PIN Code *</label>
+          <input type="text" id="pin" placeholder="6-digit PIN" maxlength="6" required/>
+        </div>
+        <div class="form-group">
+          <label>Preferred Delivery Date *</label>
+          <input type="date" id="deliveryDate" required/>
+        </div>
+        <div class="form-group">
+          <label>Delivery Time Slot</label>
+          <select id="timeSlot">
+            <option>Morning (8AM – 12PM)</option>
+            <option>Afternoon (12PM – 4PM)</option>
+            <option>Evening (4PM – 7PM)</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <label>Special Instructions</label>
+          <textarea id="instructions" rows="2" placeholder="Any specific instructions for delivery..."></textarea>
+        </div>
+      </div>
+      <div class="step-buttons">
+        <button class="btn-back" onclick="goToStep(2)">← Back</button>
+        <button class="btn-next" onclick="goToStep(4)">Next: Payment →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: PAYMENT -->
+    <div class="booking-step hidden" id="step4">
+      <h2><i class="fas fa-credit-card"></i> Step 4: Payment Method</h2>
+
+      <div class="payment-methods">
+        <label class="payment-option" onclick="selectPayment('upi')">
+          <input type="radio" name="payment" value="upi"/>
+          <div class="payment-icon">📱</div>
+          <div>
+            <strong>UPI Payment</strong>
+            <span>Google Pay, PhonePe, Paytm, BHIM</span>
+          </div>
+          <span class="pay-badge">Instant</span>
+        </label>
+
+        <label class="payment-option" onclick="selectPayment('card')">
+          <input type="radio" name="payment" value="card"/>
+          <div class="payment-icon">💳</div>
+          <div>
+            <strong>Credit / Debit Card</strong>
+            <span>Visa, Mastercard, RuPay</span>
+          </div>
+          <span class="pay-badge">Secure</span>
+        </label>
+
+        <label class="payment-option" onclick="selectPayment('netbanking')">
+          <input type="radio" name="payment" value="netbanking"/>
+          <div class="payment-icon">🏦</div>
+          <div>
+            <strong>Net Banking</strong>
+            <span>All major banks supported</span>
+          </div>
+        </label>
+
+        <label class="payment-option" onclick="selectPayment('emi')">
+          <input type="radio" name="payment" value="emi"/>
+          <div class="payment-icon">📅</div>
+          <div>
+            <strong>EMI (No-Cost)</strong>
+            <span>3, 6, 12 month options via bank</span>
+          </div>
+          <span class="pay-badge">0% Interest</span>
+        </label>
+
+        <label class="payment-option" onclick="selectPayment('cod')">
+          <input type="radio" name="payment" value="cod"/>
+          <div class="payment-icon">💵</div>
+          <div>
+            <strong>Cash on Delivery</strong>
+            <span>Pay when equipment arrives</span>
+          </div>
+        </label>
+
+        <label class="payment-option" onclick="selectPayment('kisan')">
+          <input type="radio" name="payment" value="kisan"/>
+          <div class="payment-icon">🏛️</div>
+          <div>
+            <strong>Kisan Credit Card</strong>
+            <span>Government scheme – subsidized</span>
+          </div>
+          <span class="pay-badge green">Subsidy</span>
+        </label>
+      </div>
+
+      <!-- UPI Details -->
+      <div id="upi-details" class="payment-detail-box hidden">
+        <label>UPI ID *</label>
+        <input type="text" id="upiId" placeholder="yourname@upi or mobile@paytm"/>
+        <p class="hint">💡 Accepted: GPay, PhonePe, Paytm, BHIM, any UPI app</p>
+      </div>
+
+      <!-- Card Details -->
+      <div id="card-details" class="payment-detail-box hidden">
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label>Card Number *</label>
+            <input type="text" id="cardNo" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" oninput="formatCard(this)"/>
+          </div>
+          <div class="form-group">
+            <label>Card Holder Name *</label>
+            <input type="text" id="cardName" placeholder="Name on card"/>
+          </div>
+          <div class="form-group">
+            <label>Expiry Date *</label>
+            <input type="text" id="expiry" placeholder="MM/YY" maxlength="5"/>
+          </div>
+          <div class="form-group">
+            <label>CVV *</label>
+            <input type="password" id="cvv" placeholder="3-digit CVV" maxlength="3"/>
+          </div>
+        </div>
+        <p class="hint">🔒 SSL encrypted. Your card details are 100% secure.</p>
+      </div>
+
+      <!-- Net Banking -->
+      <div id="netbanking-details" class="payment-detail-box hidden">
+        <label>Select Your Bank *</label>
+        <select>
+          <option>State Bank of India</option>
+          <option>Andhra Bank</option>
+          <option>Telangana Grameena Bank</option>
+          <option>HDFC Bank</option>
+          <option>ICICI Bank</option>
+          <option>Bank of Baroda</option>
+          <option>Punjab National Bank</option>
+          <option>Axis Bank</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="step-buttons">
+        <button class="btn-back" onclick="goToStep(3)">← Back</button>
+        <button class="btn-pay" onclick="placeOrder()">
+          <i class="fas fa-lock"></i> Confirm & Pay Securely
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ORDER SUMMARY SIDEBAR -->
+  <div class="order-summary">
+    <h3>🧾 Order Summary</h3>
+    <div class="summary-line"><span>Equipment</span><span id="s-equip">—</span></div>
+    <div class="summary-line"><span>Type</span><span id="s-type">—</span></div>
+    <div class="summary-line"><span>Quantity</span><span id="s-qty">1</span></div>
+    <div class="summary-line"><span>Delivery</span><span class="green">FREE</span></div>
+    <div class="summary-line"><span>GST (5%)</span><span id="s-gst">—</span></div>
+    <hr/>
+    <div class="summary-total"><span>Total</span><span id="s-total">—</span></div>
+    <div class="summary-badges">
+      <span>🔒 Secure</span>
+      <span>✅ Verified</span>
+      <span>🚚 Free Delivery</span>
+    </div>
+    <div class="trust-seals">
+      <div class="seal">💳 UPI</div>
+      <div class="seal">💳 Visa</div>
+      <div class="seal">💳 RuPay</div>
+      <div class="seal">🏦 NetBanking</div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS POPUP -->
+<div class="popup-overlay hidden" id="successPopup">
+  <div class="popup-box">
+    <div class="popup-icon">✅</div>
+    <h2>Booking Confirmed!</h2>
+    <p>Your order has been placed successfully.</p>
+    <div class="receipt" id="receiptBox">
+      <h3>🧾 Booking Receipt</h3>
+      <div class="receipt-line"><span>Booking ID</span><span id="r-id">—</span></div>
+      <div class="receipt-line"><span>Name</span><span id="r-name">—</span></div>
+      <div class="receipt-line"><span>Equipment</span><span id="r-equip">—</span></div>
+      <div class="receipt-line"><span>Delivery Date</span><span id="r-date">—</span></div>
+      <div class="receipt-line"><span>Address</span><span id="r-addr">—</span></div>
+      <div class="receipt-line"><span>Payment</span><span id="r-pay">—</span></div>
+      <div class="receipt-line total"><span>Amount Paid</span><span id="r-total">—</span></div>
+    </div>
+    <p class="confirm-msg">📱 Confirmation SMS sent to your mobile.<br/>📧 Receipt emailed to you.</p>
+    <div class="popup-buttons">
+      <button onclick="printReceipt()" class="btn-outline-green">🖨️ Print Receipt</button>
+      <a href="index.html" class="btn-go-home">🏠 Go to Home</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div><h3>🌾 KisanMart</h3><p>India's trusted farm equipment marketplace.</p></div>
+    <div><h4>Contact</h4><p>📞 1800-XXX-XXXX</p><p>📧 support@kisanmart.in</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2024 KisanMart. All rights reserved.</p></div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
